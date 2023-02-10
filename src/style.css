@@ -7,29 +7,37 @@ p.title.text{
 }
 chat.window{
     width: 100%;
-    background-color: #ffffff;
+    background-color: #161428;
     display: flex;
     flex-direction: column;
+    padding: 5px;
+    grid-gap: 3px;
 }
 chat.message{
     max-width: 70%;
-    background-color: #e9e9e9;
+    background-color: #ffffff;
     line-height: 20px;
     padding: 12px;
-    border-radius: 7px;
     position: relative;
 }
 chat.message.right{
-    margin: 5px 5px 5px auto;
+    margin: 0 0 0 auto;
+    border-radius: 7px 7px 0 7px;
 }
 chat.message.left{
-    margin: 5px auto 5px 5px;
+    margin: 0 auto 0 0;
+    border-radius: 7px 7px 7px 0;
 }
 chat.reply{
     position: absolute;
+    background-color: #dfdfdf;
+    width: calc(100% - 20px);
+    box-sizing: border-box;
     top: 9px;
     margin: 0;
     padding: 0 6px;
     white-space: nowrap;
-    border-left: 2px solid #00642c;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    border-left: 2px solid #3f3f3f;
 }
