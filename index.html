@@ -4,9 +4,83 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Papers</title>
+
+    <link rel="stylesheet" href="src/base.css">
+
+    <title>Поисковик</title>
 </head>
 <body>
-    
+    <style>
+        body{
+            background-color: #e7e7e7;
+        }
+        main{
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            margin-top: 20%;
+        }
+        input.search.input{
+            width: 100%;
+            box-sizing: border-box;
+            padding: 12px 23px;
+            border: none;
+            font-size: 18px;
+            box-shadow: 0 0 14px 0 #c3c3c3;
+            border-radius: 30px;
+            font-weight: 500;
+        }
+        div.search.result{
+            background-color: #fff;
+            width: 100%;
+            padding: 7px;
+            border-radius: 5px;
+            box-sizing: border-box;
+            margin-top: 20px;
+            box-shadow: 0 0 14px 0 #c3c3c3;
+        }
+        div.item.void{
+            width: 100%;
+            text-align: center;
+            font-weight: bold;
+            color: #8b8b8b;
+        }
+    </style>
+    <div class="wrapper">
+        <main>
+            <h1>Поисковик по статьям!!</h1>
+            <input type="text" placeholder="Начните печатать..." autofocus class="search input">
+        </main>
+    </div>
+    <script>
+        function load_texts() {
+            var data = undefined
+            const response = fetch('https://opolonix.github.io/papers/src/texts.json', {method: 'GET'});
+            return response.then(response => {return {text:response.json(), response:response}})
+        }
+        texts = load_texts()
+        console.log(texts.then(response => {return response.text}));
+        function search(text){
+            return undefined
+        }
+        document.querySelector('input').addEventListener('keydown', function(e) {
+            if (e.keyCode === 13) {
+                result = this.value.toLowerCase()
+                if (result != '' && document.querySelector(".search.result") == undefined){
+                    searh_result = document.createElement('div')
+                    searh_result.className = "search result"
+                    document.querySelector("main").appendChild(searh_result)
+                }
+                if (result != '' && search(result) == undefined){
+                    document.querySelector(".search.result").innerHTML = "<div class='item void'>Совпадений не найдено...</div>"
+                }
+                if (result == '' && document.querySelector(".search.result") != undefined){
+                    document.querySelector(".search.result").remove()
+                }
+                console.log(result);
+            }
+        });
+    </script>
 </body>
 </html>
