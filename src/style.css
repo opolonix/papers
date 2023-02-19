@@ -12,12 +12,13 @@ chat.window{
     flex-direction: column;
     padding: 5px;
     grid-gap: 3px;
+    box-sizing: border-box;
 }
 chat.message{
     max-width: 70%;
     background-color: #ffffff;
     line-height: 20px;
-    padding: 12px;
+    padding: 5px 12px;
     position: relative;
 }
 chat.message.right{
@@ -29,13 +30,11 @@ chat.message.left{
     border-radius: 7px 7px 7px 0;
 }
 chat.reply{
-    position: absolute;
-    background-color: #dfdfdf;
+    display: block;
+    background-color: #f3f3f3;
     width: calc(100% - 20px);
     box-sizing: border-box;
-    top: 9px;
-    margin: 0;
-    padding: 0 6px;
+    padding: 2px 6px;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
